@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom"
-import {FaBars, FaTimes} from "react-icons/fa";
+import {FaBars} from "react-icons/fa";
 import {links} from "../utils/constants"
 import CartButtons from "./CartButtons"
 
@@ -21,9 +21,7 @@ function Navbar() {
                     <span className="logo-r">Wonders</span>
                     </h2>
                 </Link>
-                <button type='button' className='nav-toggle' onClick={handleNavToggle}>
-            {isNavOpen ? <FaTimes /> : <FaBars />}
-          </button>
+                <button type='button' className='nav-toggle'><FaBars /></button>
             </div>
 
               <ul className="nav-links">
