@@ -7,31 +7,32 @@ import {useProductsContext} from "../context/products_context"
 
 
 function Sidebar() {
-  const data=useProductsContext();
-  console.log(data);
-  const isOpen = true;
+  const {isSidebarOpen, closeSidebar}=useProductsContext();
+
 
   return (
-    <aside className={isOpen ? "show-sidebar sidebar" : "sidebar"}>
+    <aside className={isSidebarOpen ? "show-sidebar sidebar" : "sidebar"}>
       <div className="sidebar-container">
         <div className='sidebar-header'>
           <Link to='/'>
             <h2 className="logo">Wooden Wonders</h2>
           </Link>
-          <button type='button' className='nav-toggle'><FaTimes /></button>
+          <button type='button' className='nav-toggle' onClick={closeSidebar}><FaTimes /></button>
         </div>
+
         <ul className='sidebar-links'>
           {links.map((link) => {
             const { id, text, url } = link
             return (
               <li key={id}>
-                <Link to={url} className="link">{text}</Link>
+                <Link to={url} className="link" onClick={closeSidebar}>{text} </Link>
               </li>
             )
           })}
-          <Link to="/checkout" className="link">Checkout</Link>
+          
         </ul>
-        <CartButtons />
+
+        <CartButtons></CartButtons>
       </div>
     </aside>
   );

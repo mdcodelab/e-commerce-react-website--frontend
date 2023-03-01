@@ -1,10 +1,13 @@
 import React from 'react';
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { useProductsContext } from '../context/products_context';
+
 
 function CartButtons() {
+  const {isSidebarOpen, closeSidebar}=useProductsContext();
   return (
-    <div className="cart-btn-container">
+    <div className={isSidebarOpen ? "show-btn" : "cart-btn-container"} onClick={closeSidebar}>
         <Link to="/cart" className="shopping">
         Cart
         <span className="cart-container">

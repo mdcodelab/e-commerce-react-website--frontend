@@ -193,7 +193,14 @@ ul.nav-links a:hover::after {
 
   div.cart-btn-container {
     display: none;
+    height: 100%;
     }
+
+  div.show-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
     
     .shopping, .auth-btn {
     justify-self: right;
@@ -207,7 +214,7 @@ ul.nav-links a:hover::after {
      background: transparent;
     }
    
-    @media (min-width: 992px) {
+    @media only screen and (min-width: 992px) {
       .nav-toggle {
         display: none;
       }
@@ -270,7 +277,7 @@ div.sidebar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem;
 }
 
 .sidebar-links {

@@ -3,13 +3,10 @@ import {Link} from "react-router-dom"
 import {FaBars} from "react-icons/fa";
 import {links} from "../utils/constants"
 import CartButtons from "./CartButtons"
+import { useProductsContext } from '../context/products_context';
 
 function Navbar() {
-  const [isNavOpen, setIsNavOpen] = React.useState(false)
-
-  const handleNavToggle = () => {
-    setIsNavOpen(!isNavOpen)
-  }
+  const{openSidebar}=useProductsContext()
 
   return (
     <nav>
@@ -21,7 +18,7 @@ function Navbar() {
                     <span className="logo-r">Wonders</span>
                     </h2>
                 </Link>
-                <button type='button' className='nav-toggle'><FaBars /></button>
+                <button type='button' className='nav-toggle' onClick={openSidebar}><FaBars /></button>
             </div>
 
               <ul className="nav-links">
