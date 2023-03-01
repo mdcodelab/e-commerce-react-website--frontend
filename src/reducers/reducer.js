@@ -6,7 +6,7 @@ const products_reducer = (state, action) => {
     if(action.type === "SIDEBAR_CLOSE") {
         return {...state, isSidebarOpen: false}
     }
-throw new Error(`No mathing ${action.type}`)
+throw new Error(`No matching ${action.type}`)
 }
 
 export default products_reducer
