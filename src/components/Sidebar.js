@@ -3,13 +3,16 @@ import { FaTimes} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { links } from '../utils/constants'
 import CartButtons from './CartButtons';
+import {useProductsContext} from "../context/products_context"
 
 
 function Sidebar() {
+  const data=useProductsContext();
+  console.log(data);
   const isOpen = true;
 
   return (
-    <sidebar className={isOpen ? "show-sidebar sidebar" : "sidebar"}>
+    <aside className={isOpen ? "show-sidebar sidebar" : "sidebar"}>
       <div className="sidebar-container">
         <div className='sidebar-header'>
           <Link to='/'>
@@ -30,7 +33,7 @@ function Sidebar() {
         </ul>
         <CartButtons />
       </div>
-    </sidebar>
+    </aside>
   );
 }
 

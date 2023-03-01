@@ -13,7 +13,7 @@ function CartButtons() {
         </span>
         </Link>
         <button type="button" className="auth-btn">
-            Login <FaUserPlus classNAme="icon"></FaUserPlus>
+            Login <FaUserPlus className="icon"></FaUserPlus>
         </button>
     </div>
   );
