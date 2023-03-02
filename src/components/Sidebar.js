@@ -29,7 +29,7 @@ function Sidebar() {
               </li>
             )
           })}
-          
+          <Link to="/checkout" className="link" onClick={closeSidebar}>Checkout</Link>
         </ul>
 
         <CartButtons></CartButtons>

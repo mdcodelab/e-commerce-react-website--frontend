@@ -197,8 +197,8 @@ div.nav-header {
 
 .logo {
   display: flex;
-  font-size: 1.5rem;
-  font-family: "Rockester", cursive;
+  font-size: 2rem;
+  font-family: "Aladin", cursive;
 }
 
 .logo-l {
@@ -327,6 +327,10 @@ footer h5 {
   color: var(--clr-white);
   margin: 0.1rem;
   font-size: 1rem;
+}
+
+footer span {
+  font-family: "Aladin", cursive;
 }
 
 footer span {
@@ -514,6 +518,85 @@ div.about article p, div.about h2 {
     font-size: 1.5rem;
   }
 }
+
+/* === HOME PAGE === */
+/* HOME PAge - HEADER*/
+div.home-container {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+div.home-header {
+  width: 100%;
+  height: 80vh;
+}
+
+div.welcome {
+  padding-top: 2rem;
+  transform: translateY(100%);
+  animation: move 0.7s forwards;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+div.welcome p {
+  padding: 1.5rem 0;
+  font-size: 1.3rem;
+  text-align: justify;
+}
+
+div.welcome-img {
+  height: 80vh;
+  display: none;
+}
+
+div.welcome-img img {
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: show 0.7s forwards;
+}
+
+@keyframes show {
+from {opacity: 0}
+to {opacity: 1}
+}
+
+@media only screen and (min-width: 992px) {
+  div.home-header {
+    display: flex;
+  }
+  div.welcome-img {
+    display: block;
+    margin-left: 2rem;
+  }
+  div.welcome, div.welcome-img {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  div.welcome h1 {
+    font-size: 1.8rem;
+  }
+  div.welcome p {
+    font-size: 1rem;
+  }
+}
+
+
+
+
 
 
 
