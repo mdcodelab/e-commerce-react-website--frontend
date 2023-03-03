@@ -28,6 +28,10 @@ export const services = [
       icon: <GiStabbedNote />,
       title: 'history',
       text:
-        "Our company has a rich history of creating and selling beautiful and functional wooden furniture. Today, we continue to honor our legacy by using only the finest materials and the same attention to detail that has made us a trusted name in the industry. We are proud of our heritage and remain committed to creating and selling quality furniture that stands the test of time.",
+        "Our company has a rich history of creating and selling beautiful and functional wooden furniture. Today and beyond, we continue to honor our legacy by using only the finest materials and the same attention to detail that has made us a trusted name in the industry. We are proud of our heritage and remain committed to creating and selling quality furniture that stands the test of time.",
     },
   ]
+
+export const products_url = 'https://course-api.com/react-store-products'
+
+export const single_product_url = `https://course-api.com/react-store-single-product?id=`

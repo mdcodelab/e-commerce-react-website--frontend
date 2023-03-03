@@ -74,8 +74,9 @@ function Home() {
                   <p>Subscribe to our newsletter and receive a 
                       20% discount on your first purchase. Stay updated on our latest collections and exclusive offers.</p>
                 </div>
-                <form className="contact-form">
-                  <input type="email" className="form-input" placeholder="Enter email"></input>
+                <form action="https://formspree.io/f/mbjeyzqd"
+                      method="POST"className="contact-form">
+                  <input type="email" name="_replyto" className="form-input" placeholder="Enter email"></input>
                   <button type="submit" className="btn submit-btn">Subscribe</button>
 
                 </form>
