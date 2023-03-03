@@ -130,13 +130,13 @@ div.container {
 }
 
 .btn {
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 1rem;
   text-transform: uppercase;
   text-align: center;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.2rem;
   letter-spacing: var(--spacing);
-  background: var(--clr-primary-2);
+  background: var(--clr-primary-5);
   color: var(--clr-primary-10);
   border-radius: var(--radius);
   display: inline-block;
@@ -525,6 +525,7 @@ div.home-container {
   width: 100%;
   height: 100%;
   padding: 1rem;
+  margin-top: 2rem;
 }
 
 div.home-header {
@@ -543,9 +544,14 @@ div.welcome p {
 
 div.welcome-img {
   display: none;
+  background: rgb(0,0,0,0.2);
+  position: relative;
 }
 
 div.welcome-img img {
+  position: absolute;
+  top:0; left: 0;
+  z-index: -1;
   border-radius: var(--radius);
   box-shadow: var(--box-shadow);
   width: 100%;
@@ -588,9 +594,8 @@ to {opacity: 1}
 /* == HOME PAGE - SERVICES == */
 div.services-container {
   background: var(--clr-primary-10);
-  padding: 3rem 0;
+  padding: 2rem 0;
 height: 100%;
-padding: 2rem;
 }
 
 div.services-container article {
@@ -605,24 +610,23 @@ div.services-container p {
 
 div.services {
   background: var(--clr-primary-10);
-  height: 140vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 div.service {
-  height: 42vh;
-  min-height: 40vh;
+  height: 100%;
     background: var(--clr-primary-7);
     border-radius: var(--radius);
     box-shadow: var(--box-shadow);
     text-align: center;
     padding: 1.5rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;;
+}
+
+div.service-2 {
+  margin: 2rem 0;
 }
 
 div.service .icon {
@@ -646,11 +650,12 @@ div.service .icon:hover{
 
 div.service h4 {
   text-transform: capitalize;
+  margin: 1.2rem 0;
 }
 
 div.service p {
-  font-size: 1rem;
-  line-height: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.3rem !important;
 }
 
 @media only screen and (min-width: 992px) {
@@ -672,12 +677,12 @@ div.service p {
     padding-bottom: 1rem;
   }
   div.service {
-    height: 60vh;
+    
     width: 31%;
   }
 
   div.service p {
-    line-height: 1.2rem;
+    line-height: 1.4rem !important;
   }
 
   div.services {
@@ -685,14 +690,106 @@ div.service p {
     width: 100%;
     justify-content: space-between;
   }
+  div.service-2 {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  div.service p {
+    font-size: 0.85rem;
+  }
 }
 
 
 @media only screen and (max-width: 500px) {
-  div.services-container p {
+  div.service p {
 font-size: 0.75rem;
   }
+  div.service h4 {
+    margin: 0.5rem 0;
+      }
 }
+
+@media only screen and (max-width: 360px) {
+  div.service p {
+    line-height: 0.5rem;
+  }
+}
+
+/* === NEWSLETTER == */
+div.newsletter-container {
+  background-image: url("./assets/house.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-attachment: fixed;
+  width: 100%;
+  height: 70vh;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+  position: relative;
+}
+
+div.newsletter-center {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  padding: 2rem 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div.newsletter-title h3 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+div.newsletter-title p {
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 1.2rem;
+}
+
+form.contact-form input{
+padding: 0.5rem;
+}
+
+@media only screen and (max-width: 365px) {
+  div.newsletter-title p {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+  }
+  form.contact-form input {
+    padding: 0.2rem;
+  }
+  .submit-btn {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  
+}
+
+
+
+
+
+
+
+
 
 
 

@@ -21,7 +21,7 @@ export const services = [
       icon: <GiDiamondHard />,
       title: 'vision',
       text:
-        "We provide unique and bespoke wooden furniture. We aim to create innovative designs that inspire and reflect the personal style and needs of our clients. We are dedicated to achieving excellence in every aspect of our business, from design to delivery, and we aim to build long-term relationships with our customers based on trust, quality, and reliability.",
+        "We provide unique and bespoke wooden furniture. We aim to create innovative designs that inspire and reflect the personal style and needs of our clients. We are dedicated to achieving excellence in every aspect of our business, from design to delivery, and we aim to build long-term relationships with our customers based on trust, quality, and reliability. Let us bring your vision to life!",
     },
     {
       id: 3,
