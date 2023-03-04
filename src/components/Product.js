@@ -3,6 +3,7 @@ import {FaGalacticRepublic} from "react-icons/fa";
 import {Link} from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {formatPrice} from "../utils/helpers";
 
 
 function Product({image, name, price, id}) {
@@ -25,13 +26,13 @@ function Product({image, name, price, id}) {
     <div className="product-container" data-aos="flip-up">
       <img src={image} alt={name}></img>
       <Link to={`/products/${id}`} className="cover">
-            <div className="icon-background">
-            <FaGalacticRepublic className="icon" />
+            <div className="icon-products-background">
+            <FaGalacticRepublic className="icon-products" />
             </div>
       </Link>
       <div className="product-footer">
         <span className="product-footer-name">{name}</span>
-        <span>${price}</span>
+        <span>{formatPrice(price)}</span>
       </div>
     </div>
   );
