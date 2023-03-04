@@ -2,16 +2,23 @@ import React from "react";
 import reducer from "../reducers/reducer";
 import axios from "axios";
 import {products_url} from "../utils/constants";
+import {single_products_url} from "../utils/constants";
 
 
 const ProductsContext=React.createContext();
 
 const initialState={
+    //sidebar
     isSidebarOpen: false,
+    //products
     products_loading: false,
     products_error: false,
     products: [],
-    featured_products: []
+    featured_products: [],
+    //single product
+    single_product_loading: false,
+    single_product_error: false,
+    single_product: {}
 };
 
 const ProductsProvider = ({children}) => {
@@ -26,7 +33,6 @@ const ProductsProvider = ({children}) => {
         dispatch({type: "SIDEBAR_CLOSE"})
     }
 
-    //loading
     
     //get all products
     const fetchProducts = async () => {
@@ -45,7 +51,22 @@ const ProductsProvider = ({children}) => {
 
     React.useEffect(() => {
         fetchProducts();
+        //fetchSingleProduct("recZkNf2kwmdBcqd0")
+        
     }, [])
+
+    //get single product
+    const fetchSingleProduct = async (products_url) => {
+        dispatch({type: "GET_SINGLE_PRODUCT_BEGIN"});
+        try {
+            const response = await axios.get(products_url);
+            const product = await response.data;
+            console.log(product);
+            dispatch({type: "GET_SINGLE_PRODUCT_SUCCESS", payload: product})
+        } catch (error) {
+            dispatch({type: "GET_SINGLE_PRODUCT_ERROR"})
+        }
+    } 
 
 
     return <ProductsContext.Provider value={{
@@ -55,7 +76,12 @@ const ProductsProvider = ({children}) => {
         products_loading: state.products_loading,
         products: state.products,
         products_error: state.products_error,
-        featured_products: state.featured_products
+        fetchSingleProduct,
+        featured_products: state.featured_products,
+        ingle_product_loading: state.ingle_product_loading,
+        ingle_product_error: state.ingle_product_error,
+        single_product: state.single_product
+
         }}>
     {children}
     </ProductsContext.Provider>
