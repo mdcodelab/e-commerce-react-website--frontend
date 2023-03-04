@@ -642,6 +642,7 @@ div.service .icon {
   align-items: center;
   justify-content: center;
   background: var(--clr-primary-10);
+  color: var(--clr-primary-1);
   margin: 0 auto;
   cursor: pointer;
   transition: all 0.5s linear;
@@ -872,7 +873,7 @@ div.product-container img {
   transition: all 0.3s linear;
 }
 
-.icon-background {
+.icon-products-background {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -885,16 +886,16 @@ div.product-container img {
   transition: opacity 0.3s linear;
 }
 
-.icon {
+.icon-products {
   color: white;
   font-size: 1.8rem;
 }
 
 .cover:hover {
-  background: rgba(96, 96, 96, 0.5);
+  background: rgba(96, 96, 96, 0.6);
 }
 
-.cover:hover .icon-background {
+.cover:hover .icon-products-background {
   opacity: 1;
 }
 
