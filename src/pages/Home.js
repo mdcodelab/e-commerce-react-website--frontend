@@ -5,7 +5,10 @@ import { IconBase } from 'react-icons';
 import {Link} from "react-router-dom";
 import home from "../assets/home.jpg";
 import {services} from "../utils/constants";
-
+import { useProductsContext } from '../context/products_context';
+import Loading from "../components/Loading";
+import ErrorProduct from "../components/ErrorProduct";
+import Product from '../components/Product';
 
 
 function Home() {
@@ -23,7 +26,10 @@ function Home() {
     });
   }, []);
 
+  const{featured_products, products_loading, products_error}=useProductsContext();
+
   return (
+  
     <div className="home-container section-center">
         <div className="home-header">
           <div className="welcome" data-aos="fade-up">
@@ -39,8 +45,30 @@ function Home() {
         </div>
 
 
-        <div className="featured-products">
-            
+
+        <div className="featured-products-container section">
+            {products_loading ? (
+                <Loading></Loading>
+            )
+            :
+                products_error ? (
+                  <ErrorProduct></ErrorProduct>)
+                :
+                (
+                  <>
+                  <div className="featured-products-title">
+                    <h2>Featured products</h2>
+                    <div className="underline"></div>
+                  </div>
+                  <div className="featured-products">
+                    {featured_products.map((product) => {
+                      return <Product key={product.id} {...product}></Product>
+                    })}
+                  </div>
+                  </>
+                )
+            }
+            <Link to="/products" className="btn btn-all-products">All Products</Link>
           </div>
 
 

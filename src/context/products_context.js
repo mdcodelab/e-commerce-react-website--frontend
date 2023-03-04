@@ -48,7 +48,15 @@ const ProductsProvider = ({children}) => {
     }, [])
 
 
-    return <ProductsContext.Provider value={{...state, openSidebar, closeSidebar}}>
+    return <ProductsContext.Provider value={{
+        ...state, 
+        openSidebar, 
+        closeSidebar,
+        products_loading: state.products_loading,
+        products: state.products,
+        products_error: state.products_error,
+        featured_products: state.featured_products
+        }}>
     {children}
     </ProductsContext.Provider>
 }
