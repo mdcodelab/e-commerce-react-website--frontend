@@ -2,7 +2,7 @@ import React from "react";
 import reducer from "../reducers/reducer";
 import axios from "axios";
 import {products_url} from "../utils/constants";
-import {single_products_url} from "../utils/constants";
+import {single_product_url} from "../utils/constants";
 
 
 const ProductsContext=React.createContext();
@@ -54,10 +54,10 @@ const ProductsProvider = ({children}) => {
     }, [])
 
     //get single product
-    const fetchSingleProduct = async (products_url) => {
+    const fetchSingleProduct = async (single_product_url) => {
         dispatch({type: "GET_SINGLE_PRODUCT_BEGIN"});
         try {
-            const response = await axios.get(products_url);
+            const response = await axios.get(single_product_url);
             const product = await response.data;
             console.log(product);
             dispatch({type: "GET_SINGLE_PRODUCT_SUCCESS", payload: product})
