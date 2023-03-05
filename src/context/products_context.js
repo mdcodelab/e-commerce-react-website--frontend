@@ -51,8 +51,6 @@ const ProductsProvider = ({children}) => {
 
     React.useEffect(() => {
         fetchProducts();
-        //fetchSingleProduct("recZkNf2kwmdBcqd0")
-        
     }, [])
 
     //get single product

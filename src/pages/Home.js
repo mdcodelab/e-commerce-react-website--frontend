@@ -7,7 +7,7 @@ import home from "../assets/home.jpg";
 import {services} from "../utils/constants";
 import { useProductsContext } from '../context/products_context';
 import Loading from "../components/Loading";
-import ErrorProduct from "../components/ErrorProduct";
+import ErrorProduct from "./ErrorProduct";
 import Product from '../components/Product';
 
 
