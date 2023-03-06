@@ -58,7 +58,7 @@ const navigate=useNavigate();
                </section>
                 <section className="single-product-content">
                   <h2>{name}</h2>
-                   <Stars></Stars>
+                   <Stars stars={stars} reviews={reviews}></Stars>
                     <h5 className="price">{formatPrice(price)}</h5>
                      <p className="description">{description}</p>
                     <p className="info">

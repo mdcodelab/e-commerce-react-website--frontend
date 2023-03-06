@@ -941,7 +941,6 @@ div.single-product-container {
   width: 90vw;
 max-width: var(--max-width);
 margin: 0 auto;
-margin-bottom: 2rem;
 height: 200vh;
 background: var(--clr-white);
 }
@@ -984,7 +983,7 @@ box-shadow: var(--box-shadow);
 }
 
 .active {
-  border: 4px solid var(--clr-primary-5);
+  border: 2px solid var(--clr-primary-5);
 }
 
 section.single-product-content, section.single-product-images{
@@ -1004,6 +1003,9 @@ section.single-product-content {
   }
   section.single-product-content {
     margin-left: 2.5rem;
+  }
+  img.gallery-image {
+    height: 4rem;
   }
 }
 
