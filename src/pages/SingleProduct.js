@@ -6,16 +6,17 @@ import {formatPrice} from "../utils/helpers";
 import Loading from "../components/Loading";
 import ErrorProduct from "./ErrorProduct";
 import PageHero from "../components/PageHero";
-import ProductImages from "../components/ProductImages";
+//import ProductImages from "../components/ProductImages";
 import Stars from "../components/Stars";
 import AddToCart from "../components/AddToCart";
+import ProductImages from '../components/ProductImages';
 
 
 function SingleProduct() {
 
   const {fetchSingleProduct, single_product, single_product_loading, single_product_error}=useProductsContext();
   const {id}=useParams();
-  console.log(id);
+  //console.log(id);
 const navigate=useNavigate();
 
   //get product
@@ -23,7 +24,7 @@ const navigate=useNavigate();
     fetchSingleProduct(`${single_product_url}${id}`)
   }, [])
 
-  console.log(single_product);
+  //console.log(single_product);
 
   const{name, price, description, stock, reviews, stars, id:sku, company, images}=single_product
 
@@ -47,35 +48,37 @@ const navigate=useNavigate();
 
 
   return (
-    <div className="single-product-container">
+    <div className="single-product-container section section-center">
         <PageHero title={name} single_product></PageHero>
-        <div className="section section-center page"></div>
-          <Link to="/products" className="btn">Back to Products</Link>
-          <div className="products-center">
-          <ProductImages></ProductImages>
-          <section className="content">
-          <h2>{name}</h2>
-          <Stars></Stars>
-          <h5 className="price">{formatPrice(price)}</h5>
-          <p className="description">{description}</p>
-          <p className="info">
-          <span>Available: </span>
-          {stock > 0 ? "In stock" : "Out of stock"}
-          </p>
-          <p className="info">
-          <span>SKU: </span>
-          {sku}
-          </p>
-          <p className="info">
-          <span>Brand </span>
-          {company}
-          </p>
-          <hr></hr>
-          {stock > 0 && <AddToCart></AddToCart>}
-          
+        <div className="single-product">
+        <Link to="/products" className="btn">Back to Products</Link>
+        <div className="single-product-center">
+                <section className="single-product-images">
+                  <ProductImages images={images}></ProductImages>
+               </section>
+                <section className="single-product-content">
+                  <h2>{name}</h2>
+                   <Stars></Stars>
+                    <h5 className="price">{formatPrice(price)}</h5>
+                     <p className="description">{description}</p>
+                    <p className="info">
+                     <span>Available: </span>
+                    {stock > 0 ? "In stock" : "Out of stock"}
+                    </p>
+                    <p className="info">
+                    <span>SKU: </span>{sku}</p>
+                    <p className="info">
+                         <span>Brand </span>
+                        {company}
+                     </p>
+                    <hr></hr>
+                  {stock > 0 && <AddToCart></AddToCart>}
 
-          </section>
-          </div>
+                </section>
+        </div>
+
+        </div>
+          
     </div>
   );
 }
