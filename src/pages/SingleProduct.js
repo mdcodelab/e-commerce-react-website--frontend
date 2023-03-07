@@ -68,7 +68,7 @@ const navigate=useNavigate();
                     <p className="info">
                     <span>SKU: </span>{sku}</p>
                     <p className="info">
-                         <span>Brand </span>
+                         <span>Brand: </span>
                         {company}
                      </p>
                     <hr></hr>
