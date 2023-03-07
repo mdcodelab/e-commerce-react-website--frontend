@@ -14,6 +14,7 @@ import Navbar from "./components/Navbar"
 import Sidebar from "./components/Sidebar"
 import Footer from "./components/Footer"
 
+
 function App() {
   return (
     <Router>
@@ -30,7 +31,7 @@ function App() {
             <Route path="/*" element={<Error></Error>}></Route>
           </Routes>
           <Footer></Footer>
-
+          
       </div>
     </Router>
   );

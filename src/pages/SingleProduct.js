@@ -26,7 +26,7 @@ const navigate=useNavigate();
 
   //console.log(single_product);
 
-  const{name, price, description, stock, reviews, stars, id:sku, company, images}=single_product
+  const{name, price, description, stock, reviews, stars, id:sku, company, images, colors}=single_product
 
   //navigate to Homepage if error
   React.useEffect(() => {
@@ -62,17 +62,17 @@ const navigate=useNavigate();
                     <h5 className="price">{formatPrice(price)}</h5>
                      <p className="description">{description}</p>
                     <p className="info">
-                     <span>Available: </span>
+                     <span style={{fontWeight: "bold"}}>Available: </span>
                     {stock > 0 ? "In stock" : "Out of stock"}
                     </p>
                     <p className="info">
-                    <span>SKU: </span>{sku}</p>
+                    <span style={{fontWeight: "bold"}}>SKU: </span>{sku}</p>
                     <p className="info">
-                         <span>Brand: </span>
+                         <span style={{fontWeight: "bold"}}>Brand: </span>
                         {company}
                      </p>
                     <hr></hr>
-                  {stock > 0 && <AddToCart></AddToCart>}
+                  {stock > 0 && <AddToCart product={single_product}></AddToCart>}
 
                 </section>
         </div>

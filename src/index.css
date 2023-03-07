@@ -1048,6 +1048,7 @@ section.single-product-content h2 {
 
 section.single-product-content h5 {
   font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 section.single-product-content p {
@@ -1065,6 +1066,39 @@ margin-bottom: 1.5rem;
 
 div.stars span {
   color: #ffb900;
+}
+
+p.info {
+  text-transform: capitalize;
+}
+
+
+/* ADD TO CART*/
+div.colors {
+  display: flex;
+  align-items: center;
+}
+
+div.colors span {
+  padding-right: 0.3rem;
+  font-weight: bold;
+}
+
+div.colors div{
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.selected {
+opacity: 1 !important;
 }
 
 
