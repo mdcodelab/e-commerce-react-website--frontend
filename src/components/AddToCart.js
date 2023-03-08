@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import { FaCheck } from 'react-icons/fa';
 import { IoColorFill, IoColorFillOutline } from 'react-icons/io5';
+import AmountButtons from "./AmountButtons";
 
 
 
@@ -9,8 +10,23 @@ function AddToCart({product}) {
   const {id, stock, colors}=product;
 
   const[mainColor, setMainColor]=React.useState(colors[0]);
-  console.log(mainColor)
+  const[amount, setAmount]=React.useState(1);
 
+  const increase = () => {
+    if(amount > stock) {
+      setAmount(amount);
+    } else {
+      setAmount(prevState => prevState+1);
+    }
+  }
+
+  const decrease = () => {
+    if(amount <= 1 ) {
+      setAmount(amount)
+    } else {
+      setAmount(prevState => prevState-1);
+    }
+  }
 
   return (
     <div className="colors-container">
@@ -23,9 +39,9 @@ function AddToCart({product}) {
               </div>
             })}
             </div>
-        <div className="btn-container">
-
-        </div>
+            <AmountButtons increase={increase} decrease={decrease} amount={amount}></AmountButtons>
+            <Link to="cart" className="btn">ADD TO CART</Link>
+        
     </div>
   );
 }

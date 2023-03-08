@@ -134,7 +134,7 @@ div.container {
   text-transform: uppercase;
   text-align: center;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   letter-spacing: var(--spacing);
   background: var(--clr-primary-5);
   color: var(--clr-primary-10);
@@ -769,7 +769,8 @@ div.newsletter-title p {
 }
 
 form.contact-form input{
-padding: 0.65rem;
+padding: 0.60rem;
+border-radius: var(--radius);
 }
 
 form.contact-form button{
@@ -777,7 +778,6 @@ form.contact-form button{
   font-size: 1rem;
   }
   
-
 @media only screen and (max-width: 470px) {
   div.newsletter-title p {
     font-size: 0.8rem;
@@ -1043,12 +1043,12 @@ section.single-product-content {
 
 section.single-product-content h2 {
   text-transform: capitalize;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 section.single-product-content h5 {
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 section.single-product-content p {
@@ -1061,7 +1061,7 @@ div.stars-container {
   display: flex;
   align-items: center;
 justify-content: space-between;
-margin-bottom: 1.5rem;
+margin-bottom: 1.2rem;
 }
 
 div.stars span {
@@ -1074,6 +1074,13 @@ p.info {
 
 
 /* ADD TO CART*/
+div.colors-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
 div.colors {
   display: flex;
   align-items: center;
@@ -1082,6 +1089,7 @@ div.colors {
 div.colors span {
   padding-right: 0.3rem;
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 div.colors div{
@@ -1099,6 +1107,30 @@ div.colors div{
 
 .selected {
 opacity: 1 !important;
+}
+
+/* amount buttons */
+div.amount-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amount {
+  font-size: 1.8rem;
+  display: inline-block;
+  margin: 0 0.5rem;
+  background: transparent;
+  border: none;
+}
+
+.amount-btn {
+  display: inline-block;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: transparent;
+  font-weight: 300;
 }
 
 
