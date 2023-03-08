@@ -268,7 +268,7 @@ ul.nav-links a:hover::after {
   transform: scaleX(1);
 }
 
-/* CArtButtons*/
+/* CartButtons*/
 
   div.cart-btn-container {
     display: none;
@@ -536,7 +536,7 @@ div.home-header {
 
 div.welcome p {
   padding: 1.5rem 0;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   text-align: justify;
 }
 
