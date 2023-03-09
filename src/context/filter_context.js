@@ -7,7 +7,8 @@ const FilterContext =React.createContext();
 
 const initialState = {
     filtered_products: [],
-    products: []
+    products: [],
+    grid_view: false
 }
 
 

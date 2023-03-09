@@ -35,7 +35,7 @@
     --radius: 0.3rem;
     --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    --box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    --box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 8px 0px, inset rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     --max-width: 1170px;
     --fixed-width: 620px;
   }
@@ -315,7 +315,6 @@ ul.nav-links a:hover::after {
 /* === FOOTER === */
 
 footer {
-width: 100%;
 height: 5rem;
 display: flex;
 flex-direction: column;
@@ -449,7 +448,7 @@ div.sidebar-container {
   align-items: center;
   text-transform: capitalize;
   color: var(--clr-primary-1);
-  padding-left: 3rem;
+  padding-left: 2.5rem;
 }
 
 .hero a {
@@ -488,6 +487,7 @@ div.about-page img {
 div.about article {
   flex: 1;
   margin-top: 2rem;
+  padding: 0 1rem;
 }
 
 div.about article p, div.about h2 {
@@ -859,14 +859,14 @@ div.product-container {
 
 div.product-container img {
   width: 100%;
-  height: 14rem;
+  height: 78%;
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
 }
 
 .cover {
   width: 100%;
-  height: 14rem;
+  height: 78%;
   position: absolute;
   top: 0;
   left: 0;
@@ -904,7 +904,7 @@ div.product-container img {
 
 div.product-footer {
   width: 100%;
-  height: 3rem;
+  height: 22%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1148,16 +1148,17 @@ div.products {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: grey;
 }
 
 div.filters {
-  width: 30%;
+  width: 25%;
+  background: grey;
+  height: 100%;
 }
 
 div.list {
-  width: 70%;
-  background: green;
+  width: 75%;
+  height: 100%;
 }
 
 div.grid-container {
@@ -1167,15 +1168,124 @@ div.grid-container {
   align-items: center;
   grid-gap: auto;
 }
-div.grid-container div{
-  width: 17rem;
+
+div.grid-container .product-container{
+  width: 13rem;
+  height: 10rem;
 }
 
 @media only screen and (min-width: 992px) {
   div.grid-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+  }
+  div.grid-container .product-footer-name{
+    font-size: 0.9rem;
+  }
+  div.grid-container span{
+    font-size: 0.9rem;
   }
 }
+
+  @media only screen and (max-width: 785px) {
+    div.grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      margin: 0;
+    }
+    div.grid-container .product-footer-name{
+      font-size: 0.9rem;
+    }
+    div.grid-container span{
+      font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+  div.grid-container {
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+  div.grid-container .product-footer-name{
+    font-size: 0.9rem;
+  }
+  div.grid-container span{
+    font-size: 0.9rem;
+  }
+}
+
+div.list-view {
+  width: 95%;
+  height: 30rem;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+}
+
+div.list-view img {
+  width: 100%;
+  display: block;
+  height: 50%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+div.list-view-info {
+  width: 100%;
+  height: 50%;
+  padding: 1rem 0;
+  
+}
+
+div.list-view-info h4 {
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+div.list-view-info p {
+  text-align: justify;
+  font-size: 0.9rem;
+}
+
+div.list-view-info h5 {
+  font-size: 1.1rem;
+  color: var(--clr-primary-5);
+}
+
+.btn-list-view {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.8rem;
+}
+
+@media only screen and (min-width: 900px) {
+div.list-view {
+  flex-direction: row;
+  height: 18rem;
+}
+
+div.list-view img {
+  width: 45%;
+  height: 100%;
+  margin-right: 2rem;
+}
+
+div.list-view-info {
+width: 55%;
+height: 100%;
+font-size: 1.1rem;
+}
+
+div.list-view-info p{
+  font-size: 1.1rem;
+  }
+}
+
+
+
 
 
 
