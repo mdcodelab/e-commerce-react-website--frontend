@@ -20,7 +20,10 @@ const FilterProvider = ({children}) => {
     }, [products])
    
 
-    return <FilterContext.Provider value="hello">
+    return <FilterContext.Provider value={{
+        ...state
+
+    }}>
      
 
         {children}

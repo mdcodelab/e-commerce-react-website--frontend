@@ -48,9 +48,9 @@ const navigate=useNavigate();
 
 
   return (
-    <div className="single-product-container section section-center">
-        <PageHero title={name} single_product></PageHero>
-        <div className="single-product">
+    <div className="single-product-container section">
+        <PageHero title={name}></PageHero>
+        <div className="single-product section-center">
         <Link to="/products" className="btn">Back to Products</Link>
         <div className="single-product-center">
                 <section className="single-product-images">

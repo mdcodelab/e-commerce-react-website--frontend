@@ -9,7 +9,7 @@ function Navbar() {
   const{openSidebar}=useProductsContext()
 
   return (
-    <nav>
+    <nav className="section-center">
           <div className="nav-center">
               <div className="nav-header">
                 <Link to="/">

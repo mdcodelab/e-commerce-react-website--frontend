@@ -443,14 +443,13 @@ div.sidebar-container {
 /* === PAGE HERO === */
 .hero {
   background: var(--clr-primary-10);
-  max-width: var(--max-width);
-  margin: 0 auto;
+  width: 100%;
   height: 7rem;
   display: flex;
   align-items: center;
   text-transform: capitalize;
   color: var(--clr-primary-1);
-  padding-left: 0.5rem;
+  padding-left: 3rem;
 }
 
 .hero a {
@@ -464,8 +463,10 @@ div.sidebar-container {
 
 /* === ABOUT === */
 div.about {
-  max-width: var(--max-width);
-  margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
 
 div.about-page {
@@ -522,10 +523,10 @@ div.about article p, div.about h2 {
 /* === HOME PAGE === */
 /* HOME PAge - HEADER*/
 div.home-container {
-  width: 100%;
-  height: 100%;
   padding: 1rem;
   margin-top: 2rem;
+  width: 100%;
+  height: 100%;
 }
 
 div.home-header {
@@ -859,6 +860,8 @@ div.product-container {
 div.product-container img {
   width: 100%;
   height: 14rem;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
 }
 
 .cover {
@@ -907,6 +910,8 @@ div.product-footer {
   justify-content: space-between;
   padding: 1rem 0.5rem;
   background: #fff;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
 }
 
 div.product-footer .product-footer-name {
@@ -938,17 +943,16 @@ text-align: center;
 /* === SINGLE PRODUCT === */
 /* general */
 div.single-product-container {
-  width: 90vw;
-max-width: var(--max-width);
-margin: 0 auto;
 height: 200vh;
 background: var(--clr-white);
+height: 100%;
 }
 
 div.single-product {
   width: 100%;
   height: 100%;
   margin-top: 2rem;
+  padding: 0 1rem;
 }
 
 div.single-product-center {
@@ -1132,6 +1136,47 @@ div.amount-btns {
   background: transparent;
   font-weight: 300;
 }
+
+
+/* === PRODUCTS PAGE === */
+main {
+  width: 100%;
+  height: 100%;
+}
+
+div.products {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: grey;
+}
+
+div.filters {
+  width: 30%;
+}
+
+div.list {
+  width: 70%;
+  background: green;
+}
+
+div.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-gap: auto;
+}
+div.grid-container div{
+  width: 17rem;
+}
+
+@media only screen and (min-width: 992px) {
+  div.grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 
 
 
