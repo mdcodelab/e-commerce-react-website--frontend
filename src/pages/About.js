@@ -4,7 +4,7 @@ import aboutImg from "../assets/hero-bcg.jpeg";
 
 function About() {
   return (
-    <div className="about">
+    <div className="about section-center">
         <PageHero title=" about"></PageHero>
         <div className="page section section-center about-page">
               <img src={aboutImg} alt="nice desk"></img>

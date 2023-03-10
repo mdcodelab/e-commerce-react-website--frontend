@@ -32,7 +32,7 @@ function Product({image, name, price, id}) {
       </Link>
       <div className="product-footer">
         <span className="product-footer-name">{name}</span>
-        <span>{formatPrice(price)}</span>
+        <span className="price">{formatPrice(price)}</span>
       </div>
     </div>
   );

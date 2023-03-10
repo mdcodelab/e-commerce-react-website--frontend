@@ -8,7 +8,7 @@ const FilterContext =React.createContext();
 const initialState = {
     filtered_products: [],
     products: [],
-    grid_view: false
+    grid_view: true
 }
 
 
@@ -19,10 +19,20 @@ const FilterProvider = ({children}) => {
     React.useEffect(() => {
         dispatch({type: "LOAD_PRODUCTS", payload: products})
     }, [products])
+
+    const showList = () => {
+        dispatch({type: "SHOW_LIST"})
+    }
+
+    const showGrid = () => {
+        dispatch({type: "SHOW_GRID"})
+    }
    
 
     return <FilterContext.Provider value={{
-        ...state
+        ...state,
+        showList,
+        showGrid
 
     }}>
      
