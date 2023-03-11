@@ -30,12 +30,16 @@ const FilterProvider = ({children}) => {
         dispatch({type: "SHOW_GRID"})
     }
 
-    //change the option on input.select
+    //change the option on input.select and sort
     const updateSort = (e) => {
         dispatch({type: "UPDATE_SORT", payload: e.target.value})
         let value =e.target.value;
         console.log(value);
     }
+
+    React.useEffect(() => {
+    dispatch({type: "SORT_PRODUCTS"});
+    }, [state.filtered_products])
    
 
     return <FilterContext.Provider value={{
