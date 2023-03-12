@@ -19,12 +19,20 @@ const initialState={
     single_product_loading: false,
     single_product_error: false,
     single_product: {},
-    //
-    grid_view: false,
-    sort: "price-lowest"
-    //
-    
-    
+    //view and sort
+    grid_view: true,
+    sort: "price-lowest",
+    //filters
+    filters: {
+        text: "",
+        company: "all",
+        category: "all",
+        color: "all",
+        min_price: 0,
+        max_price: 0,
+        price: 0,
+        shipping: false
+    } 
 };
 
 const ProductsProvider = ({children}) => {

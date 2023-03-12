@@ -10,8 +10,13 @@ const products_reducer = (state, action) => {
         return {...state, products_loading: true}
     }
     if(action.type === "GET_PRODUCTS_SUCCESS") {
+        let maxPrice = action.payload.map((product)=> (product.price))
+        maxPrice=Math.max(...maxPrice)
+        
+        //for featured_products
         const featured_products=action.payload.filter(product => product.featured === true)
-        return {...state, products_loading: false, products: action.payload, featured_products}
+        return {...state, products_loading: false, products: action.payload, 
+            featured_products, filters: {...state.filters, max_price: maxPrice, price: maxPrice}}
     }
     if(action.type === "GET_PRODUCTS_ERROR") {
         return {...state, products_loading: false, products_error: true}
@@ -50,8 +55,6 @@ const products_reducer = (state, action) => {
             if(sort === "name-z") {
                 tempProducts = tempProducts.sort((a, b) => b.name.localeCompare(a.name))
             }
-
-
         return {...state, products: tempProducts}
      }
 
