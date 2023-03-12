@@ -1,5 +1,5 @@
 import React from "react";
-import reducer from "../reducers/reducer";
+import reducer from "../reducers/products_reducer";
 import axios from "axios";
 import {products_url} from "../utils/constants";
 import {single_product_url} from "../utils/constants";
@@ -18,7 +18,13 @@ const initialState={
     //single product
     single_product_loading: false,
     single_product_error: false,
-    single_product: {}
+    single_product: {},
+    //
+    grid_view: false,
+    sort: "price-lowest"
+    //
+    
+    
 };
 
 const ProductsProvider = ({children}) => {
@@ -66,6 +72,40 @@ const ProductsProvider = ({children}) => {
         }
     } 
 
+    //grid view and list view
+    const gridView = () => {
+        dispatch({type: "GRID_VIEW"})
+    }
+
+    const listView = () => {
+        dispatch({type: "LIST_VIEW"})
+    }
+
+    //sort
+    const updateSort = (e) => {
+        let value = e.target.value;
+        dispatch({type: "UPDATE_SORT", payload: e.target.value})
+    
+        // SORT_PRODUCTS logic here
+        let tempProducts = [...state.products];
+        if (value === "price-lowest") {
+            tempProducts = tempProducts.sort((a, b) => a.price - b.price);
+        }
+        if (value === "price-highest") {
+            tempProducts = tempProducts.sort((a, b) => b.price - a.price);
+        }
+        if (value === "name-a") {
+            tempProducts = tempProducts.sort((a, b) => a.name.localeCompare(b.name));
+        }
+        if (value === "name-z") {
+            tempProducts = tempProducts.sort((a, b) => b.name.localeCompare(a.name));
+        }
+        dispatch({type: "SORT_PRODUCTS", payload: tempProducts})
+    }
+    
+
+    
+
 
     return <ProductsContext.Provider value={{
         ...state, 
@@ -78,7 +118,12 @@ const ProductsProvider = ({children}) => {
         featured_products: state.featured_products,
         ingle_product_loading: state.ingle_product_loading,
         ingle_product_error: state.ingle_product_error,
-        single_product: state.single_product
+        single_product: state.single_product,
+        //
+        grid_view: state.grid_view,
+        gridView,
+        listView,
+        updateSort
 
         }}>
     {children}

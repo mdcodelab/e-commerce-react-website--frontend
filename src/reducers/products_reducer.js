@@ -25,6 +25,37 @@ const products_reducer = (state, action) => {
     if(action.type === "GET_SINGLE_PRODUCT_ERROR") {
        return {...state, single_product_loading: false, single_product_error: true}
     }
+    //view, sort, filter
+    if(action.type === "GRID_VIEW") {
+        return {...state, grid_view: true}
+     }
+     if(action.type === "LIST_VIEW") {
+        return {...state, grid_view: false}
+     }
+     if(action.type === "UPDATE_SORT") {
+        return {...state, sort: action.payload}
+     }
+     if(action.type==="SORT_PRODUCTS") {
+        const {sort, products}=state;
+        let tempProducts=[...products];
+            if(sort === "price-lowest") {
+                tempProducts=tempProducts.sort((a, b) => (a.price-b.price));
+            }
+            if(sort === "price-highest") {
+                tempProducts=tempProducts.sort((a, b) => (b.price-a.price));
+            }
+            if(sort === "name-a") {
+                tempProducts = tempProducts.sort((a, b) => a.name.localeCompare(b.name));
+            }
+            if(sort === "name-z") {
+                tempProducts = tempProducts.sort((a, b) => b.name.localeCompare(a.name))
+            }
+
+
+        return {...state, products: tempProducts}
+     }
+
+
 throw new Error(`No matching ${action.type}`)
 }
 
