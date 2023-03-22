@@ -8,7 +8,7 @@ function Filters() {
   updateFilters, clearFilters, products}=useProductsContext();
 
   const categories = ["all",...getUniqueValues(products, 'category')];
-  const companies = getUniqueValues(products, 'company');
+  const companies = ["all", ...getUniqueValues(products, 'company')];
   const colors = getUniqueValues(products, 'colors');
   console.log(categories, companies, colors);
 
@@ -32,6 +32,19 @@ function Filters() {
               })}
           </div>
           {/* end of categories */}
+            
+            {/* company */}
+            <h5>Company</h5>
+            <div className="company-control">
+              <select name="company" value={company} onChange={updateFilters} className="company">
+                {companies.map((comp, index)=> {
+                  return <option key={index} value={comp}>{comp}</option>
+                })}
+              </select>
+            </div>
+
+            {/* end company */}
+
 
       </form>
     </div>

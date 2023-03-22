@@ -1436,6 +1436,8 @@ cursor: pointer;
 
 .acc-btn {
   color: red;
+} option {
+  display: block;
 }
 
 
