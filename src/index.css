@@ -1156,7 +1156,10 @@ div.products {
 div.filters {
   width: 25%;
   height: 100%;
-  background: grey;
+  MIN-height: 100vh;
+  background: var(--clr-white);
+  border: 2px solid black;
+  padding-left: 2rem;
 }
 
 div.list {
@@ -1417,6 +1420,22 @@ div.sort-container form select:focus {
     transform-origin: left;
     transform: rotateY(90deg);
   }
+}
+
+/* FILTERS*/
+div.category-control button {
+  display: block;
+  font-size: 1rem;
+  border: none;
+  background: var(--clr-white);
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+cursor: pointer;
+
+}
+
+.acc-btn {
+  color: red;
 }
 
 

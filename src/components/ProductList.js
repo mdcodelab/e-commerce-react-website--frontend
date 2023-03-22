@@ -6,7 +6,7 @@ import GridView from "./GridView";
 function ProductList() {
   const {products, grid_view}=useProductsContext();
   console.log(products);
-  console.log(grid_view);
+  //console.log(grid_view);
   
   if(products.length < 1) {
     return (<h5>Sorry, no products matched your search...</h5>)

@@ -12,6 +12,7 @@ const products_reducer = (state, action) => {
     if(action.type === "GET_PRODUCTS_SUCCESS") {
         let maxPrice = action.payload.map((product)=> (product.price))
         maxPrice=Math.max(...maxPrice)
+        console.log(maxPrice);
         
         //for featured_products
         const featured_products=action.payload.filter(product => product.featured === true)
@@ -56,6 +57,13 @@ const products_reducer = (state, action) => {
                 tempProducts = tempProducts.sort((a, b) => b.name.localeCompare(a.name))
             }
         return {...state, products: tempProducts}
+     }
+     if(action.type==="UPDATE_FILTERS") {
+        const {name, value}=action.payload;
+        return {...state, filters: {...state.filters, [name]: value}}
+     }
+     if(action.type === "FILTER_PRODUCTS") {
+        return {...state}
      }
 
 

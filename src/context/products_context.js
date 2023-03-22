@@ -54,9 +54,9 @@ const ProductsProvider = ({children}) => {
         try {
             const response = await axios.get(products_url);
             const products = await response.data;
-            console.log(products);
-            console.log(initialState.featured_products);
-            console.log(initialState.products);
+            //console.log(products);
+            //console.log(initialState.featured_products);
+            //console.log(initialState.products);
             dispatch({type: "GET_PRODUCTS_SUCCESS", payload: products})
         } catch (error) {
             dispatch({type: "GET_PRODUCTS_ERROR"})
@@ -92,7 +92,7 @@ const ProductsProvider = ({children}) => {
     //sort
     const updateSort = (e) => {
         let value = e.target.value;
-        dispatch({type: "UPDATE_SORT", payload: e.target.value})
+        dispatch({type: "UPDATE_SORT", payload: value})
     
         // SORT_PRODUCTS logic here
         let tempProducts = [...state.products];
@@ -110,6 +110,42 @@ const ProductsProvider = ({children}) => {
         }
         dispatch({type: "SORT_PRODUCTS", payload: tempProducts})
     }
+ 
+
+    //filtering
+    const updateFilters = (e) => {
+        let name=e.target.name;
+        let value=e.target.value;
+        console.log(name, value);
+        if (name === 'category') {
+            value = e.target.textContent
+          }
+          if (name === 'color') {
+            value = e.target.dataset.color
+          }
+          if (name === 'price') {
+            value = Number(value)
+          }
+          if (name === 'shipping') {
+            value = e.target.checked
+          }
+        dispatch({type: "UPDATE_FILTERS", payload: {name, value}})
+    }
+    
+
+    React.useEffect(() => {
+        dispatch({type: "FILTER_PRODUCTS"})
+    }, [])
+
+    const clearFilters = () => {
+        //dispatch({ type: CLEAR_FILTERS })
+    }
+
+
+    React.useEffect(() => {
+        dispatch({type: "FILTER_PRODUCTS"})
+        console.log("filtering products");
+    }, [state.products, state.sort, state.filters])
     
 
     
@@ -127,12 +163,14 @@ const ProductsProvider = ({children}) => {
         ingle_product_loading: state.ingle_product_loading,
         ingle_product_error: state.ingle_product_error,
         single_product: state.single_product,
-        //
+        //grid-list view, sort 
         grid_view: state.grid_view,
         gridView,
         listView,
-        updateSort
-
+        updateSort,
+        //filters
+        updateFilters,
+        clearFilters
         }}>
     {children}
     </ProductsContext.Provider>
