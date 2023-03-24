@@ -52,7 +52,9 @@ function Filters() {
                     {colors.map((col, index) => {
                       if(col === "all") {
                         return <button name={color} onClick={updateFilters}
-                         data-color="all" className={col === "all" ? "all-btn-active" : "all-btn"}>{col}</button>
+                         data-color="all" className={col === "all" ? "all-btn-active" : "all-btn"} key={index}>
+                         {col}
+                         </button>
                       }
                       return <button key={index} style={{background: `${col}`}}
                       className={color === col ? "color-btn-active" : "color-btn"}
@@ -73,12 +75,15 @@ function Filters() {
                     </div>
               {/* end price */}
 
-              
-
-
-
-
+              {/* shipping */}
+                  <div className="shipping-control">
+                    <label htmlFor="shipping">Free shipping</label>
+                    <input type="checkbox" name="shipping" checked={shipping} id="shipping"
+                    onChange={updateFilters}></input>
+                  </div>
+              {/* end shipping */}
       </form>
+      <button type="button" className="clear-btn" onClick={clearFilters}>clear filters</button>
     </div>
   );
 }

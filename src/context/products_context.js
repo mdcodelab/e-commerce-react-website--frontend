@@ -113,39 +113,37 @@ const ProductsProvider = ({children}) => {
  
 
     //filtering
-    const updateFilters = (e) => {
-        let name=e.target.name;
-        let value=e.target.value;
-        console.log(name, value);
-        if (name === 'category') {
-            value = e.target.textContent
-          }
-          if (name === 'color') {
-            value = e.target.dataset.color
-          }
-          if (name === 'price') {
-            value = Number(value)
-          }
-          if (name === 'shipping') {
-            value = e.target.checked
-          }
-        dispatch({type: "UPDATE_FILTERS", payload: {name, value}})
+    // filtering
+const updateFilters = React.useCallback((e) => {
+    let name=e.target.name;
+    let value=e.target.value;
+    console.log(name, value);
+    if (name === 'category') {
+        value = e.target.textContent
     }
-    
-
-    React.useEffect(() => {
-        dispatch({type: "FILTER_PRODUCTS"})
-    }, [])
-
-    const clearFilters = () => {
-        //dispatch({ type: CLEAR_FILTERS })
+    if (name === 'color') {
+        value = e.target.dataset.color
     }
+    if (name === 'price') {
+        value = Number(value)
+    }
+    if (name === 'shipping') {
+        value = e.target.checked
+    }
+    dispatch({type: "UPDATE_FILTERS", payload: {name, value}})
+}, [dispatch])
 
 
-    React.useEffect(() => {
-        dispatch({type: "FILTER_PRODUCTS"})
-        console.log("filtering products");
-    }, [state.products, state.sort, state.filters])
+React.useEffect(() => {
+    dispatch({type: "FILTER_PRODUCTS"})
+    console.log("filtering products");
+}, [state.products, state.sort])
+
+const clearFilters = () => {
+    dispatch({ type: "CLEAR_FILTERS" })
+}
+
+
     
 
     
