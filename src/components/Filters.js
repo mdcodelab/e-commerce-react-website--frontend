@@ -64,6 +64,17 @@ function Filters() {
                 </div>
             {/* end colors */}
 
+             {/* price */}
+                    <div className="price-control">
+                      <h5>Price</h5>
+                      <p className="price">{formatPrice(price)}</p>
+                      <input type="range" name="price" onChange={updateFilters}
+                       min={min_price} max={max_price} value={price}></input>
+                    </div>
+              {/* end price */}
+
+              
+
 
 
 
