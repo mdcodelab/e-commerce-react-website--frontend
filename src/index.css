@@ -1436,8 +1436,15 @@ cursor: pointer;
 
 .acc-btn {
   color: red;
-} option {
+} 
+option {
   display: block;
+}
+
+.color-btn {
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
 }
 
 

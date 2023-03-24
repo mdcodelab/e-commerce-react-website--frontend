@@ -3,13 +3,14 @@ import {formatPrice, getUniqueValues} from "../utils/helpers";
 import { FaCheck } from 'react-icons/fa';
 import { useProductsContext } from '../context/products_context';
 
+
 function Filters() {
   const {filters: {text, category, company, color, min_price, price, max_price, shipping}, 
   updateFilters, clearFilters, products}=useProductsContext();
 
   const categories = ["all",...getUniqueValues(products, 'category')];
   const companies = ["all", ...getUniqueValues(products, 'company')];
-  const colors = getUniqueValues(products, 'colors');
+  const colors = ["all", ...getUniqueValues(products, 'colors')];
   console.log(categories, companies, colors);
 
   return (
@@ -42,8 +43,28 @@ function Filters() {
                 })}
               </select>
             </div>
-
             {/* end company */}
+
+            {/* colors */}
+                <div className="colors-control">
+                  <h5>Colors</h5>
+                  <div className="colors">
+                    {colors.map((col, index) => {
+                      if(col === "all") {
+                        return <button name={color} onClick={updateFilters}
+                         data-color="all" className={col === "all" ? "all-btn-active" : "all-btn"}>{col}</button>
+                      }
+                      return <button key={index} style={{background: `${col}`}}
+                      className={color === col ? "color-btn-active" : "color-btn"}
+                      name="color" data-color={col} onClick={updateFilters}>
+                        {color === col ? <FaCheck></FaCheck> : null}
+                      </button>
+                    })}
+                  </div>
+                </div>
+            {/* end colors */}
+
+
 
 
       </form>
