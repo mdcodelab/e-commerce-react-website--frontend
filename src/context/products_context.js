@@ -117,18 +117,18 @@ const ProductsProvider = ({children}) => {
 const updateFilters = React.useCallback((e) => {
     let name=e.target.name;
     let value=e.target.value;
-    console.log(name, value);
+    //console.log(name, value);
     if (name === 'category') {
         value = e.target.textContent
     }
     if (name === 'color') {
-        value = e.target.dataset.color
+        value = e.target.dataset.color;
     }
     if (name === 'price') {
         value = Number(value)
     }
     if (name === 'shipping') {
-        value = e.target.checked
+        value = e.target.checked;
     }
     dispatch({type: "UPDATE_FILTERS", payload: {name, value}})
 }, [dispatch])

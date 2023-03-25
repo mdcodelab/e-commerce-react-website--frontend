@@ -13,6 +13,13 @@ function Filters() {
   const colors = ["all", ...getUniqueValues(products, 'colors')];
   console.log(categories, companies, colors);
 
+
+  const stylesBtn_all = {
+    borderBottom: color === "all" ? "1px solid var(--clr-grey-4)" : "none"
+  };
+
+
+
   return (
     <div className="filters-container">
       <form onSubmit={(e)=> e.preventDefault()}>
@@ -24,7 +31,7 @@ function Filters() {
           {/* end of search input */}
 
           {/* categories */}
-          <div className="category-control">
+          <div className="form-control category-control">
             <h5>Category</h5>
               {categories.map((cat, index) => {
                 return <button type="button" key={index}
@@ -35,55 +42,57 @@ function Filters() {
           {/* end of categories */}
             
             {/* company */}
-            <h5>Company</h5>
-            <div className="company-control">
+            <div className="form-control company-control">
+              <h5>Company</h5>
               <select name="company" value={company} onChange={updateFilters} className="company">
                 {companies.map((comp, index)=> {
-                  return <option key={index} value={comp}>{comp}</option>
+                  return <option key={index} value={comp} className="company">{comp}</option>
                 })}
               </select>
             </div>
             {/* end company */}
 
             {/* colors */}
-                <div className="colors-control">
-                  <h5>Colors</h5>
+                <div className="form-control colors-control">
+                  <h5>Colors</h5> 
                   <div className="colors">
                     {colors.map((col, index) => {
                       if(col === "all") {
-                        return <button name={color} onClick={updateFilters}
-                         data-color="all" className={col === "all" ? "all-btn-active" : "all-btn"} key={index}>
+                        return <button name="color" onClick={updateFilters} style={stylesBtn_all}
+                         data-color="all" className="all-btn" key={index}>
                          {col}
                          </button>
-                      }
+                      } 
+                      else {
                       return <button key={index} style={{background: `${col}`}}
-                      className={color === col ? "color-btn-active" : "color-btn"}
+                      className={color === col ? "color-btn activeCol" : "color-btn"}
                       name="color" data-color={col} onClick={updateFilters}>
-                        {color === col ? <FaCheck></FaCheck> : null}
-                      </button>
+                        {color === col ? <FaCheck className= "icon-color"></FaCheck> : null}
+                      </button>}
                     })}
+                    
                   </div>
                 </div>
             {/* end colors */}
 
              {/* price */}
-                    <div className="price-control">
+                    <div className="form-control price-control">
                       <h5>Price</h5>
                       <p className="price">{formatPrice(price)}</p>
                       <input type="range" name="price" onChange={updateFilters}
-                       min={min_price} max={max_price} value={price}></input>
+                       min={min_price} max={max_price} value={price} className="my-range"></input>
                     </div>
               {/* end price */}
 
               {/* shipping */}
-                  <div className="shipping-control">
+                  <div className="form-control shipping-control">
                     <label htmlFor="shipping">Free shipping</label>
                     <input type="checkbox" name="shipping" checked={shipping} id="shipping"
                     onChange={updateFilters}></input>
                   </div>
               {/* end shipping */}
       </form>
-      <button type="button" className="clear-btn" onClick={clearFilters}>clear filters</button>
+      <button type="button" className="clear-btn btn" onClick={clearFilters}>clear filters</button>
     </div>
   );
 }

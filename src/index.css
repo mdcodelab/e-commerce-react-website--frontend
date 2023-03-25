@@ -1144,22 +1144,24 @@ div.amount-btns {
 main {
   width: 100%;
   height: 100%;
-  max-width: 100vw;
+  min-height: 100vh;
 }
 
 div.products {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
 }
 
 div.filters {
   width: 25%;
-  height: 100%;
-  MIN-height: 100vh;
-  background: var(--clr-white);
-  border: 2px solid black;
+  height: 120vh;
+  min-height: 100%;
+  background: transparent;
   padding-left: 2rem;
+  padding-top: 1.5rem;
+  position: sticky;
+  top: 5rem;
+  left: 0;
 }
 
 div.list {
@@ -1170,9 +1172,16 @@ div.list {
 @media only screen and (max-width: 800px) {
 div.products {
   flex-direction: column;
+  align-items: center;
 }
-div.filter {
-  width: 100%;
+div.filters {
+  width: 20rem;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  top: auto;
+padding-top: 0;
+height: 110vh;
 }
 div.list {
   width: 100%;
@@ -1210,11 +1219,16 @@ div.grid-container .product-container{
   div.grid-container {
     grid-template-columns: 1fr;
   }
+  div.grid-container .product-container {
+    width: 60%;
+    height: 20rem;
+  }
 }
 
 @media only screen and (max-width: 350px) {
   div.grid-container .product-container {
     max-width: 12rem;
+    height: 12rem;
   }
   div.grid-container .product-footer-name {
     font-size: 0.75rem;
@@ -1250,7 +1264,6 @@ div.list-view-info {
   width: 100%;
   height: 50%;
   padding: 1rem 0;
-  
 }
 
 div.list-view-info h4 {
@@ -1423,6 +1436,147 @@ div.sort-container form select:focus {
 }
 
 /* FILTERS*/
+div.form-control input[type="text"] {
+padding: 0.5rem;
+width: 15rem;
+border-radius: var(--radius);
+border: 0.0.5rem solid var(--clr-primary-5);
+outline: none;
+background: var(--clr-primary-10);
+box-shadow: var(--box-shadow);
+transition: 0.3s ease-in-out;
+}
+
+div.form-control input[type="text"]:focus {
+  outline: 0.2rem solid var(--clr-red-light);
+  border: none;
+  }
+
+  div.form-control h5, div.form-control label {
+    font-size: 1.1rem;
+    letter-spacing: 0.1rem;
+  }
+
+  /*categories*/
+  div.category-control button {
+    letter-spacing: 0.1rem;
+    font-size: 1rem;
+    color: var(--clr-grey-4);
+  }
+
+  .acc-btn {
+    border-bottom: 0.1rem solid var(--clr-grey-4) !important;
+  }
+
+  /*company*/
+  div.company-control {
+    height: 100%;
+  }
+
+  div.company-control select, 
+  div.company-control select option.company{
+    width: 15rem;
+    padding: 0.5rem;
+    text-transform: capitalize;
+    color: var(--clr-grey-4);
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    background: var(--clr-primary-10);
+    border-radius: var(--radius);
+    border: 0.05rem solid var(--clr-primary-5);
+    outline: none;
+    box-shadow: var(--box-shadow);
+  }
+
+  div.company select:focus {
+    border: 1px solid red;
+  }
+
+  select option.company {
+    margin-bottom: 0.3rem;
+  }
+
+  /* colors*/
+  div.colors {
+    width: 10rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  div.colors button {
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  }
+
+  div.colors-control .all-btn {
+    text-transform: capitalize;
+    color: var(--clr-grey-4);
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    background: transparent;
+  }
+  
+  .icon-color {
+    color: var(--clr-white);
+    background: transparent;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .color-btn {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    border-bottom: none;
+  }
+  
+
+  /* price */
+  div.price-control p {
+    font-size: 1.1rem;
+    color: var(--clr-grey-4);
+    margin-bottom: -0.3rem;
+  }
+
+  div.price-control input[type="range"].my-range {
+    width: 15rem;
+    height: 0.2rem;
+    cursor: pointer;
+  }
+
+  /* shipping */
+  div.shipping-control {
+    width: 15rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  div.shipping-control input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 0.5rem;
+  }
+
+  button.clear-btn {
+    background: var(--clr-red-light);
+    margin-bottom: 1.5rem;
+    border: none;
+    font-size: 1rem;
+  }
+
+  div.category-control, div.company-control, 
+  div.colors-control, div.price-control,
+  div.shipping-control, button.clear-btn {
+    margin-top: 1.5rem;
+  }
+
 div.category-control button {
   display: block;
   font-size: 1rem;
@@ -1431,14 +1585,6 @@ div.category-control button {
   text-transform: capitalize;
   margin-bottom: 0.5rem;
 cursor: pointer;
-
-}
-
-.acc-btn {
-  color: red;
-} 
-option {
-  display: block;
 }
 
 .color-btn {
