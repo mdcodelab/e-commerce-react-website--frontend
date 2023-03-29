@@ -43,7 +43,8 @@ function AddToCart({product}) {
             })}
             </div>
             <AmountButtons increase={increase} decrease={decrease} amount={amount}></AmountButtons>
-            <Link to="cart" className="btn" onClick={() => addToCart(id, mainColor, amount, product)}>ADD TO CART</Link>
+            <Link to="/cart" className="btn" onClick={()=> addToCart(id, mainColor, amount, product)}>
+            ADD TO CART</Link>
         
     </div>
   );
