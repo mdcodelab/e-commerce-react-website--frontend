@@ -1,12 +1,12 @@
 import React from 'react';
 import {formatPrice, getUniqueValues} from "../utils/helpers";
 import { FaCheck } from 'react-icons/fa';
-import { useProductsContext } from '../context/products_context';
+import { useFilterContext } from '../context/filter_context';
 
 
 function Filters() {
   const {filters: {text, category, company, color, min_price, price, max_price, shipping}, 
-  updateFilters, clearFilters, products}=useProductsContext();
+  updateFilters, clearFilters, products}=useFilterContext();
 
   const categories = ["all",...getUniqueValues(products, 'category')];
   const companies = ["all", ...getUniqueValues(products, 'company')];
@@ -15,7 +15,7 @@ function Filters() {
 
 
   const stylesBtn_all = {
-    borderBottom: color === "all" ? "1px solid var(--clr-grey-4)" : "none"
+    borderBottom: color === "all" ? "1.5px solid var(--clr-grey-4)" : "none"
   };
 
 
@@ -25,7 +25,7 @@ function Filters() {
       <form onSubmit={(e)=> e.preventDefault()}>
       {/* search input*/}
           <div className="form-control">
-            <input type="text" name="text" placeholder="Search..." 
+            <input type="text" name="text" placeholder="Search..." id="text"
             className="search-input" value={text} onChange={updateFilters} ></input>
           </div>
           {/* end of search input */}
@@ -91,8 +91,10 @@ function Filters() {
                     onChange={updateFilters}></input>
                   </div>
               {/* end shipping */}
-      </form>
-      <button type="button" className="clear-btn btn" onClick={clearFilters}>clear filters</button>
+      </form> 
+      <div className="clear-btn">
+          <button type="button" className="clear-btn btn" onClick={clearFilters}>clear filters</button>
+      </div>
     </div>
   );
 }

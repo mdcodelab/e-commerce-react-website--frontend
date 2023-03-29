@@ -1169,7 +1169,7 @@ div.list {
   height: 100%;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1044px) {
 div.products {
   flex-direction: column;
   align-items: center;
@@ -1181,10 +1181,15 @@ div.filters {
   position: relative;
   top: auto;
 padding-top: 0;
-height: 110vh;
+height: 100%;
 }
 div.list {
   width: 100%;
+}
+div.clear-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 }
 
@@ -1222,6 +1227,13 @@ div.grid-container .product-container{
   div.grid-container .product-container {
     width: 60%;
     height: 20rem;
+  }
+}
+
+@media only screen and (max-width: 660px) {
+  div.grid-container .product-container {
+    width: 60%;
+    height: 15rem;
   }
 }
 
@@ -1437,7 +1449,7 @@ div.sort-container form select:focus {
 
 /* FILTERS*/
 div.form-control input[type="text"] {
-padding: 0.5rem;
+padding: 0.6rem;
 width: 15rem;
 border-radius: var(--radius);
 border: 0.0.5rem solid var(--clr-primary-5);
@@ -1488,12 +1500,9 @@ div.form-control input[type="text"]:focus {
     box-shadow: var(--box-shadow);
   }
 
-  div.company select:focus {
-    border: 1px solid red;
-  }
-
   select option.company {
     margin-bottom: 0.3rem;
+    width: 15rem;
   }
 
   /* colors*/
@@ -1564,11 +1573,16 @@ div.form-control input[type="text"]:focus {
     border-radius: 0.5rem;
   }
 
+  div.clear-btn {
+    width: 15rem;
+  }
+
   button.clear-btn {
     background: var(--clr-red-light);
     margin-bottom: 1.5rem;
     border: none;
     font-size: 1rem;
+    display: inline-block;
   }
 
   div.category-control, div.company-control, 
@@ -1592,6 +1606,22 @@ cursor: pointer;
   height: 1.3rem;
   border-radius: 50%;
 }
+
+@media only screen and (max-width: 440px) {
+  div.form-control, div.form-control button, 
+  div.form-control select {
+    font-size: 0.85rem;
+  }
+div.form control input {
+  width: 290px;
+}
+button.clear-btn {
+  font-size: 0.85rem;
+}
+}
+
+
+/* */
 
 
 

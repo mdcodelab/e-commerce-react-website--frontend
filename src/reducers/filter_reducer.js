@@ -1,15 +1,75 @@
 export const filterReducer = ((state, action) => {
     if (action.type === "LOAD_PRODUCTS") {
-      return {...state, products: [...action.payload], filtered_products: [action.payload]};
+      let maxPrice=action.payload.map((product) => {
+        return product.price
+      })
+      maxPrice=Math.max(...maxPrice);
+      return {...state, products: [...action.payload], filtered_products: [...action.payload],
+      filters: {...state.filters, max_price: maxPrice, price: maxPrice}};
     }
   
     if (action.type === "SHOW_GRID") {
-      return {...state, show_grid: true};
+      return {...state, grid_view: true};
     }
   
     if (action.type === "SHOW_LIST") {
-      return {...state, show_grid: false};
+      return {...state, grid_view: false};
     }
+
+    if(action.type === "UPDATE_SORT") {
+      return {...state, sort: action.payload}
+    }
+
+    if(action.type === "SORT_PRODUCTS") {
+      const{sort, filtered_products}=state;
+      let tempProducts=[...filtered_products]
+      tempProducts = tempProducts.sort((a, b) => (a.price-b.price))
+          if(sort === "price-lowest") {
+            tempProducts = tempProducts.sort((a, b) => (a.price-b.price))
+          }
+          if(sort === "price-highest") {
+            tempProducts = tempProducts.sort((a, b) => (b.price-a.price))
+          }
+          if(sort === "name-a") {
+            tempProducts=tempProducts.sort((a, b) => {
+              return a.name.localeCompare(b.name);
+            })
+          }
+          if(sort === "name-z") {
+            tempProducts=tempProducts.sort((a, b) => {
+              return b.name.localeCompare(a.name);
+            })
+          }
+      return {...state, filtered_products: tempProducts} 
+    }
+
+      if(action.type === "UPDATE_FILTERS") {
+      const {name, value}=action.payload;
+      return {...state, filters: {...state.filters, [name]:value}}
+      }
+      if(action.type==="FILTER_PRODUCTS") {
+        const{products}=state;
+        let tempProducts = [...products];
+        const {text, category, company, color, price, shipping}=state.filters;
+        //filtering
+        if(text){
+          tempProducts=tempProducts.filter((product) => {
+            return product.name.toLowerCase().startsWith(text);
+          })
+        }
+        return {...state, filtered_products: tempProducts}
+      }
+      if(action.type==="CLEAR_FILTERS") {
+        return {...state, filters: {
+          ...state.filters,
+          text: "",
+        company: "all",
+        category: "all",
+        color: "all",
+        price: state.filters.max_price,
+        shipping: false
+        }}
+      }
   
     throw new Error("No matching action type found.");
   });

@@ -1,17 +1,17 @@
 import React from 'react';
 import {BsFillGridFill, BsList} from "react-icons/bs";
-import { useProductsContext } from '../context/products_context';
+import { useFilterContext } from '../context/filter_context';
 
 function Sort() {
-  const {products, grid_view, gridView, listView, sort, updateSort}=useProductsContext();
+  const {filtered_products:products, grid_view, showList, showGrid, sort, updateSort}=useFilterContext();
   return (
     <div className="sort-container">
       <div className="result">
       <div className="btn-container">
             <button type="button" className={grid_view ? "active-btn" : "grid-btn"}>
-            <BsFillGridFill title="Grid view" onClick={gridView}></BsFillGridFill></button>
+            <BsFillGridFill title="Grid view" onClick={showGrid}></BsFillGridFill></button>
             <button type="button" className={!grid_view ? "active-btn" : ""}>
-            <BsList title="List view" onClick={listView}></BsList></button>
+            <BsList title="List view" onClick={showList}></BsList></button>
             </div>
           <span>{products.length} products found.</span>
       </div>
