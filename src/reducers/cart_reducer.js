@@ -1,12 +1,22 @@
 const cart_reducer = (state, action) => {
 if(action.type === "ADD_TO_CART") {
     const {id, color, amount, product}=action.payload;  //get data from payload
-    let tempItem=state.cart.find((item) => item.id === id + color)
+    let tempItem=state.cart.find((item) => item.id === id + color)    //combine id with color for adding products with same id but of different color
     if(tempItem) {
+        let tempCart=state.cart.map((cartItem) => {
+            if(cartItem.id ===id+color) {      //add mode products with the same id
+                let newAmount = cartItem+amount;
+                if(newAmount>cartItem.max) {newAmount=cartItem.max}
+                return {...cartItem, amount: newAmount}
+            } else {
+                return cartItem;
+            }
+        })
+        return {...state, cart: tempCart}
 
-    } else {
+    } else {  
         const newItem={
-            id: id+color,
+            id: id+color,  //id from the cart
             name: product.name,
             color, amount,
             image: product.images[0].url,
