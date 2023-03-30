@@ -18,12 +18,12 @@ function Cart() {
 
 
   return (
-    <main>
+    <div className="cart-container">
       <PageHero title=" cart"></PageHero>
-      <div className="cart-container">
+      <div className="cart-content">
 
       </div>
-    </main>
+    </div>
   );
 }
 
