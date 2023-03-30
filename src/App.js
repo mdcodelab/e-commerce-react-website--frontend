@@ -6,7 +6,7 @@ import Products from "./pages/Products"
 import SingleProduct from "./pages/SingleProduct"
 import About from "./pages/About"
 import Error from "./pages/Error"
-import Cart from "./pages/Cart"
+import CartPage from "./pages/CartPage"
 import CheckOut from "./pages/Checkout"
 import Private from "./pages/Private"
 //components
@@ -26,7 +26,7 @@ function App() {
             <Route path="/products" element={<Products></Products>}></Route>
             <Route path="/products/:id" element={<SingleProduct></SingleProduct>}></Route>
             <Route path="/about" element={<About></About>}></Route>
-            <Route path="/cart" element={<Cart></Cart>}></Route>
+            <Route path="/cart" element={<CartPage></CartPage>}></Route>
             <Route path="/checkout" element={<CheckOut></CheckOut>}></Route>
             <Route path="/*" element={<Error></Error>}></Route>
           </Routes>
