@@ -11,11 +11,11 @@ function CartItem({id, image, name, color, price, amount}) {
     const{removeItem, toggleAmount}=useCartContext();
 
     const increase = () => {
-
+        toggleAmount(id, "inc")
     }
 
     const decrease = () => {
-
+        toggleAmount(id, "dec")
     }
 
   return (
