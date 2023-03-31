@@ -28,7 +28,7 @@ const CartProvider = ({children}) => {
 
     //remove items
     const removeItem = (id) => {
-
+        dispatch({type: "REMOVE_ITEM", payload: id})
     }
 
     //toggle amount
@@ -37,8 +37,8 @@ const CartProvider = ({children}) => {
     }
 
     //clear cart
-    const clearCart =() => {
-
+    const clearCart = () => {
+    dispatch({type: "CLEAR_CART"})
     }
 
     React.useEffect(() => {
