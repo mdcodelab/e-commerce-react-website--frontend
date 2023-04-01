@@ -1917,6 +1917,26 @@ p.shipping-fee {
   }
 }
 
+/* cart container*/
+span.cart-container {
+  position: relative;
+  height: 6rem;
+}
+
+span.cart-value {
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--clr-red-dark);
+  color: white;
+}
+
 
 
 

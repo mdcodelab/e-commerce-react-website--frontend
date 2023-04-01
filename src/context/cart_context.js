@@ -44,6 +44,7 @@ const CartProvider = ({children}) => {
 
     React.useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(state.cart));
+        dispatch({type: "COUNT_CART_TOTALS"})
     }, [state.cart])
 
     return <CartContext.Provider value={{...state, addToCart, removeItem, toggleAmount, clearCart}}>
