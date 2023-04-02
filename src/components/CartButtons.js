@@ -3,11 +3,13 @@ import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../context/cart_context';
 import { useProductsContext } from '../context/products_context';
+import { useUserContext} from '../context/user_context';
 
 
 function CartButtons() {
   const {isSidebarOpen, closeSidebar}=useProductsContext();
   const {total_items}=useCartContext();
+  const {loginWithRedirect, myUser, logout}=useUserContext();
 
   return (
     <div className={isSidebarOpen ? "show-btn" : "cart-btn-container"} onClick={closeSidebar}>
@@ -18,9 +20,12 @@ function CartButtons() {
             <span className="cart-value">{total_items}</span>
         </span>
         </Link>
-        <button type="button" className="auth-btn">
+        <button type="button" className="auth-btn" onClick={loginWithRedirect}>
             Login <FaUserPlus className="icon"></FaUserPlus>
         </button>
+        <button type="button" className="auth-btn" onClick={()=> logout({logoutParams: {
+          returnTo: window.location.origin
+        }})}>Logout <FaUserMinus></FaUserMinus></button>
     </div>
   );
 }
