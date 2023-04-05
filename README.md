@@ -68,3 +68,28 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Auth0
+Auth0 - Main Docs
+
+Create Application
+
+Choose : Single Page Web Applications
+
+Choose : React
+
+Go to Settings Tab
+
+Copy/Paste Domain, ClientID - can be public (or use .env)
+
+Add Domain - for now http://localhost:3000 (DON'T COPY PASTE FROM URL BAR)
+
+Allowed Callback URLs
+Allowed Logout URLs
+Allowed Web Origins
+SAVE CHANGES!
+Connections email,social
+
+React SDK Docs
+
+REACT SDK API Docs
