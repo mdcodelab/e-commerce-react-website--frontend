@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import { links } from '../utils/constants'
 import CartButtons from './CartButtons';
 import {useProductsContext} from "../context/products_context"
+import { useUserContext } from '../context/user_context';
 
 
 function Sidebar() {
   const {isSidebarOpen, closeSidebar}=useProductsContext();
+  const{myUser}=useUserContext();
 
 
   return (
@@ -29,7 +31,7 @@ function Sidebar() {
               </li>
             )
           })}
-          <Link to="/checkout" className="link" onClick={closeSidebar}>Checkout</Link>
+          {myUser && (<Link to="/checkout" className="link" onClick={closeSidebar}>Checkout</Link>)}
         </ul>
 
         <CartButtons></CartButtons>

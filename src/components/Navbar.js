@@ -4,9 +4,12 @@ import {FaBars} from "react-icons/fa";
 import {links} from "../utils/constants"
 import CartButtons from "./CartButtons"
 import { useProductsContext } from '../context/products_context';
+import { useUserContext } from '../context/user_context';
 
 function Navbar() {
-  const{openSidebar}=useProductsContext()
+  const{openSidebar}=useProductsContext();
+  const {myUser}=useUserContext();
+  console.log(myUser);
 
   return (
     <nav className="section-center">
@@ -26,6 +29,7 @@ function Navbar() {
              const {id, text, url}=link
             return <li key={id}><Link to={url}>{text}</Link></li>
             })}
+            {myUser && (<li><Link to="/checkout">Checkout</Link></li>)}
         </ul>
 
         <CartButtons></CartButtons>
