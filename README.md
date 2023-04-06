@@ -93,3 +93,6 @@ Connections email,social
 React SDK Docs
 
 REACT SDK API Docs
+
+After installing Netlify locally, run: npx netlify dev and a
+
