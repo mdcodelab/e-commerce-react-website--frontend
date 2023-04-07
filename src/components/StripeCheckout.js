@@ -12,6 +12,19 @@ console.log(promise);
 
 
 const CheckoutForm = () => {
+  const {cart, total_amount, shipping_fee, clearCart}=useCartContext();
+  const {myYser}=useUserContext();
+  const history=React.useHistory();
+  //stripe stuff
+  const[succeeded, setSucceeded]=React.useState(false);
+  const[error, setError]=React.useState(null);
+  const[processing, setProcessing]=React.useState("");
+  const[disabled, setDisabled]=React.useState(true);
+  const[clientSecret, setClientSecret]=React.useState("");
+  const stripe = useStripe();
+  const elements = useElements();
+
+
 return <h2>Hello from Stripe Checkout</h2>
 }
 
