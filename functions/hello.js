@@ -1,11 +1,15 @@
 
-//domain/netlify/functions/hello
+//domain/.netlify/functions/hello
+const items=[
+    {id: 1, name: "john doe"},
+    {id: 2, name: "mary smith"}
+]
 
 exports.handler = async function (event, context) {
     console.log("Function called!");
     return {
       statusCode: 200,
-      body: "Hello world!"
+      body: JSON.stringify(items)
     };
   };
   

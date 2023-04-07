@@ -16,7 +16,12 @@ function CartButtons() {
         Cart
         <span className="cart-container">
             <FaShoppingCart className="icon"></FaShoppingCart>
-            <span className="cart-value">{total_items}</span>
+            {myUser ? (
+              <span className="cart-value">
+            {total_items}</span>
+            ) 
+            : 
+            (<span></span>)} 
         </span>
         </Link>
         

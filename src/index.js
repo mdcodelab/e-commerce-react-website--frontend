@@ -7,6 +7,7 @@ import { FilterProvider } from './context/filter_context';
 import { CartProvider} from './context/cart_context';
 import { Auth0Provider } from "@auth0/auth0-react";
 import { UserProvider} from './context/user_context';
+import StripeCeckout from './components/StripeCheckout';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
