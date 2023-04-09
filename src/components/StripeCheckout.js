@@ -42,6 +42,7 @@ const CheckoutForm = () => {
         { cart, shipping_fee, total_amount},
         { headers: { 'Content-Type': 'application/json' } }
       );
+      setClientSecret(data.clientSecret);
       console.log(data);
       return data
     } catch (error) {
@@ -52,7 +53,7 @@ const CheckoutForm = () => {
 
   React.useEffect(() => {
     createPaymentIntent();
-  },[createPaymentIntent]);
+  },[]);
 
   const handleChange = (event) => {};
 

@@ -1,6 +1,6 @@
-//domain: .nrtlify/functions/create-payment-intent 
-const dotenv = require('dotenv')
-dotenv.config()
+require('dotenv').config()
+
+const stripe=require("stripe")(process.env.REACT_APP_STRIPE_SEC)
 
 
 exports.handler = async function (event, context) {
@@ -15,10 +15,27 @@ exports.handler = async function (event, context) {
 
     console.log('Received data:', { cart, shipping_fee, total_amount });
 
-    return {
-      statusCode: 200,
-      body: 'Payment intent created successfully'
+    const calculateOrderAmount = () => {
+      return shipping_fee + total_amount;
     };
+
+    try {
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: calculateOrderAmount(),
+        currency: "usd"
+      });
+
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ clientSecret: paymentIntent.client_secret })
+      };
+    } catch (error) {
+      console.log('Error:', error);
+      return {
+        statusCode: 500,
+        body: 'Error creating payment intent'
+      };
+    }
   } catch (error) {
     console.log('Error:', error);
     return {
@@ -27,5 +44,3 @@ exports.handler = async function (event, context) {
     };
   }
 };
-
-
