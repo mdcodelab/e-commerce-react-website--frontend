@@ -1,46 +1,36 @@
-require('dotenv').config()
+//localhost:8888/.netlify/functions/create-payment.intent
 
-const stripe=require("stripe")(process.env.REACT_APP_STRIPE_SEC)
+require("dotenv").config();
 
+const stripe=require("stripe")(process.env.REACT_APP_STRIPE_SEC);
 
 exports.handler = async function (event, context) {
-  console.log(event);
+  const { cart, shipping_fee, total_amount } = JSON.parse(event.body)
+
+  const calculateOrderAmount = () => {
+    // Replace this constant with a calculation of the order's amount
+    // Calculate the order total on the server to prevent
+    // people from directly manipulating the amount on the client
+    return shipping_fee + total_amount
+  }
   try {
-    const body = event.body ? JSON.parse(event.body) : {};
-    const { cart, shipping_fee, total_amount } = body;
-
-    if (!cart || !shipping_fee || !total_amount) {
-      throw new Error('Missing required fields in request body');
-    }
-
-    console.log('Received data:', { cart, shipping_fee, total_amount });
-
-    const calculateOrderAmount = () => {
-      return shipping_fee + total_amount;
-    };
-
-    try {
-      const paymentIntent = await stripe.paymentIntents.create({
-        amount: calculateOrderAmount(),
-        currency: "usd"
-      });
-
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ clientSecret: paymentIntent.client_secret })
-      };
-    } catch (error) {
-      console.log('Error:', error);
-      return {
-        statusCode: 500,
-        body: 'Error creating payment intent'
-      };
+    // Create a PaymentIntent with the order amount and currency
+    //connect to stipe
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: calculateOrderAmount(),
+      currency: 'usd',
+    })
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ clientSecret: paymentIntent.client_secret }),
     }
   } catch (error) {
-    console.log('Error:', error);
     return {
       statusCode: 500,
-      body: 'Error creating payment intent'
-    };
+      body: JSON.stringify({ error: error.message }),
+    }
   }
-};
+}
+
+
+

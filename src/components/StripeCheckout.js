@@ -36,17 +36,18 @@ const CheckoutForm = () => {
 
 
   const createPaymentIntent = async () => {
+    console.log({ cart, shipping_fee, total_amount });
     try {
-      const { data } = await axios.post(
+      const {data} = await axios.post(
         '/.netlify/functions/create-payment-intent',
-        { cart, shipping_fee, total_amount},
+        JSON.stringify({ cart, shipping_fee, total_amount}),
         { headers: { 'Content-Type': 'application/json' } }
       );
-      setClientSecret(data.clientSecret);
       console.log(data);
-      return data
+      return data.clientSecret
+      setClientSecret(data.clientSecret);
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
   
@@ -61,6 +62,16 @@ const CheckoutForm = () => {
 
   return (
     <div className="section">
+    {succeeded ? (<div className="response-success">
+                  <h4>Thank you!</h4>
+               <h4>Your payment was successful!</h4>
+                 <h4>Redirecting to homepage shortly.</h4>
+                </div>) 
+    : (<div className="response-error">
+      <h4>Hello, {myUser && myUser.name}</h4> 
+      <p>Your total: {formatPrice(shipping_fee+total_amount)}</p>
+      <p>Test Card Number: 4242 4242 4242 4242</p>
+    </div>)}
       <form id="payment-form" onSubmit={handleSubmit}>
         <CardElement id="link-authentication-element" onChange={handleChange} />
         <button className="bt" disabled={processing || disabled || succeeded}>
