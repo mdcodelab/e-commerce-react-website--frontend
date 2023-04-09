@@ -10,35 +10,49 @@ import axios from 'axios';
 import { useCartContext } from '../context/cart_context';
 import { useUserContext } from '../context/user_context';
 import { formatPrice } from '../utils/helpers';
-//import { useHistory } from 'react-router-dom';
+
 
 
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC);
 
 
-
 const CheckoutForm = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
   const { myUser } = useUserContext();
+  
+  
   //const history = useHistory();
   
   // stripe stuff
-  const [succeeded, setSucceeded] = React.useState(true);
+  const [succeeded, setSucceeded] = React.useState(false);
   const [error, setError] = React.useState(null);
   const [processing, setProcessing] = React.useState("");
   const [disabled, setDisabled] = React.useState(true);
   const [clientSecret, setClientSecret] = React.useState("");
   const stripe = useStripe();
   const elements = useElements();
+  
+
 
   const createPaymentIntent = async () => {
-    console.log("hello from stripe checkout");
+    try {
+      const { data } = await axios.post(
+        '/.netlify/functions/create-payment-intent',
+        { cart, shipping_fee, total_amount},
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+      console.log(data);
+      return data
+    } catch (error) {
+      console.log(error);
+    }
   };
+  
 
   React.useEffect(() => {
     createPaymentIntent();
-  }, []);
+  },[createPaymentIntent]);
 
   const handleChange = (event) => {};
 

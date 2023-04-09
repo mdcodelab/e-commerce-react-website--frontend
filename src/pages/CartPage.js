@@ -8,7 +8,7 @@ import { useCartContext } from '../context/cart_context';
 
 
 function CartPage() {
-  const {cart, clearCart}=useCartContext();
+  const {cart, clearCart, total_amount, shipping_fee}=useCartContext();
 
   if(cart.length < 1) {
     return (<div className="page-100">

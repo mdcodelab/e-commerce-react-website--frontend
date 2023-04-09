@@ -6,7 +6,8 @@ import { useUserContext } from '../context/user_context';
 
 
 function CartTotals() {
-    const{total_amount, shipping_fee}=useCartContext();
+    const{cart, total_amount, shipping_fee}=useCartContext();
+    
     const{myUser, loginWithRedirect}=useUserContext();
   return (
         <div className="cartTotals-wrapper">
