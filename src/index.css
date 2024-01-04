@@ -1480,11 +1480,12 @@ div.sort-container form select:focus {
 }
 
 /* FILTERS*/
-div.form-control input[type="text"] {
+#text {
 padding: 0.6rem;
 width: 15rem;
+height: 1rem;
 border-radius: var(--radius);
-border: 0.0.5rem solid var(--clr-primary-5);
+border: 0.0.1px solid var(--clr-primary-5) !important;
 outline: none;
 background: var(--clr-primary-10);
 box-shadow: var(--box-shadow);

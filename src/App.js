@@ -23,10 +23,10 @@ function App() {
       <Sidebar></Sidebar>
           <Routes>
             <Route path="/" element={<Home></Home>}></Route>
-            <Route path="/products" element={<Products></Products>}></Route>
-            <Route path="/products/:id" element={<SingleProduct></SingleProduct>}></Route>
-            <Route path="/about" element={<About></About>}></Route>
-            <Route path="/cart" element={<CartPage></CartPage>}></Route>
+            <Route path="products" element={<Products></Products>}></Route>
+            <Route path="products/:id" element={<SingleProduct></SingleProduct>}></Route>
+            <Route path="about" element={<About></About>}></Route>
+            <Route path="cart" element={<CartPage></CartPage>}></Route>
             <Route path="/checkout" element={<PrivateRoute><CheckOut /></PrivateRoute>} />
             <Route path="/*" element={<Error></Error>}></Route>
           </Routes>

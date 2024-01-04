@@ -12,10 +12,7 @@ import { useUserContext } from '../context/user_context';
 import { formatPrice } from '../utils/helpers';
 
 
-
-
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC);
-
 
 const CheckoutForm = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
@@ -33,7 +30,6 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   
-
 
   const createPaymentIntent = async () => {
     console.log({ cart, shipping_fee, total_amount });
@@ -56,9 +52,32 @@ const CheckoutForm = () => {
     createPaymentIntent();
   },[]);
 
-  const handleChange = (event) => {};
+  const handleChange = (event) => {
+    // Listen for changes in the CardElement
+    // and display any errors as the customer types their card details
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+  };
 
-  const handleSubmit = (ev) => {};
+  const handleSubmit = async (ev) => {
+    elements.preventDefault();
+    setProcessing(true);
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+      },
+    });
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}.`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      clearCart();
+    } 
+
+  };
 
   return (
     <div className="section">
@@ -78,7 +97,7 @@ const CheckoutForm = () => {
         <span>{processing ? <div className="spinner-check"></div> : "PAY"}</span></button>
 
         {/* Show any error that happens when processing the payment*/}
-        {error && <div className="card-error" rile="alert">{error}</div>}
+        {error && <div className="card-error" role="alert">{error}</div>}
 
         {/* Show a success message upon completion*/}
         <p className={succeeded ? "result-message" : "result-message hidden"}>
@@ -102,3 +121,5 @@ const StripeCheckout = () => {
 };
 
 export default StripeCheckout;
+
+
